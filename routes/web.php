@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FilesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//Home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Files
+Route::get('UploadFile', [FilesController::class, 'uploadIndex']);
+Route::post('UploadFile', [FilesController::class, 'upload']);

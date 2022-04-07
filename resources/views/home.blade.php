@@ -2,27 +2,55 @@
 
 @section('content')
 
-@if(auth()->user()->role == "Administrador")
-
-<div>Hola JC</div>
-
-@endif
-
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                
+                <div class="card-header">{{ __('Menú Principal') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    <aside class="main-sidebar">
+                        <!-- sidebar: style can be found in sidebar.less -->
+                        <section class="sidebar">
 
-                    {{ __('You are logged in!') }}
+                            <ul class="sidebar-menu">
+
+                            <li>
+                                <a href="{{ url('UploadFile') }}">
+                                <i class="fa fa-home"></i>
+                                <span>Subir un archivo</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url('Inicio') }}">
+                                <i class="fa fa-home"></i>
+                                <span>Ver histórico de mis archivos</span>
+                                </a>
+                            </li>
+
+                            @if(auth()->user()->role == "Administrador")
+
+                                <li>
+                                    <a href="{{ url('Inicio') }}">
+                                    <i class="fa fa-home"></i>
+                                    <span>Subir archivos de un Usuario</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ url('Inicio') }}">
+                                    <i class="fa fa-home"></i>
+                                    <span>Ver histórico de todos los archivos</span>
+                                    </a>
+                                </li>
+
+                            @endif
+
+                        </section>
+                        <!-- /.sidebar -->
+                    </aside>
                 </div>
             </div>
         </div>
