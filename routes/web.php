@@ -27,5 +27,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('UploadFile', [FilesController::class, 'uploadIndex']);
 Route::post('UploadFile', [FilesController::class, 'upload']);
 
-Route::get('ShowFiles', [FilesController::class, 'index']);
+Route::get('ShowFiles', [FilesController::class, 'indexFiles']);
 Route::get('Download/{file}', [FilesController::class, 'download']);
+Route::get('ShowAllFiles', [FilesController::class, 'indexAllFiles']);

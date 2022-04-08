@@ -40,7 +40,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="{{ url('Inicio') }}">
+                                    <a href="{{ url('ShowAllFiles') }}">
                                     <i class="fa fa-home"></i>
                                     <span>Ver histórico de todos los archivos</span>
                                     </a>

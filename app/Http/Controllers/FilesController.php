@@ -8,16 +8,23 @@ use Illuminate\Support\Facades\DB;
 
 class FilesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function indexFiles()
+    {
+        $currentUser = auth()->user()->id;
+        
+        $files = DB::table('files')
+                ->where('idUser', '=', $currentUser)
+                ->get();
+
+        return view('filesViews.showFiles')->with('files', $files);
+    }
+
+    public function indexAllFiles()
     {
         $files = Files::all();
 
-        return view('filesViews.showFiles')->with('files', $files);
+        return view('filesViews.showAllFiles')->with('files', $files);
     }
 
     public function uploadIndex()
@@ -30,7 +37,7 @@ class FilesController extends Controller
         if($request->hasFile("url")){
 
             $file = $request->file("url");
-            $name = time().".".$file->guessExtension();
+            $name = $request->file("url")->getClientOriginalName();
             $path = public_path("storage/".$name);
 
             copy($file, $path);

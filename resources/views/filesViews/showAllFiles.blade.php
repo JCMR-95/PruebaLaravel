@@ -17,6 +17,7 @@
 
                             <tr>
                                 <th>Nombre del Archivo:</th>
+                                <th>Nombre del Usuario</th>
                             </tr>
 
                         </thead>
@@ -27,6 +28,7 @@
 
                                 <tr>
                                     <td><a href="{{ url('/Download/'.$file->file)  }}">{{ $file->file }}</a></td>
+                                    <td>{{ $file->nameUser }}</td>
                                 </tr>
 
                             @endforeach
