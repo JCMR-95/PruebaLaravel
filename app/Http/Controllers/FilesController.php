@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Files;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FilesController extends Controller
 {
@@ -14,7 +15,9 @@ class FilesController extends Controller
      */
     public function index()
     {
-        //
+        $files = Files::all();
+
+        return view('filesViews.showFiles')->with('files', $files);
     }
 
     public function uploadIndex()
@@ -28,12 +31,25 @@ class FilesController extends Controller
 
             $file = $request->file("url");
             $name = time().".".$file->guessExtension();
-            $route = public_path("storage/".$name);
+            $path = public_path("storage/".$name);
 
-            copy($file, $route);
+            copy($file, $path);
+
+            $idUser = auth()->user()->id;
+            $nameUser = auth()->user()->name;
+
+            DB::table('files')->insert([
+                'idUser' => $idUser,
+                'nameUser' => $nameUser,
+                'file' => $name
+            ]);
+
+            return redirect('UploadFile')->with('FileUploaded', 'OK');
 
         }
-        return view('filesViews.uploadFile');
+
+        return redirect('UploadFile')->with('ErrorUploaded', 'OK');
+
     }
 
     /**
@@ -41,9 +57,11 @@ class FilesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function download(Request $request)
     {
-        //
+        $path = public_path("storage/".$request->file);
+
+        return response()->download($path);
     }
 
     /**

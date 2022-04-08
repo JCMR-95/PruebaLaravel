@@ -20,4 +20,29 @@
         </div>
     </div>
 </div>
+
+@if(session('FileUploaded') == 'OK')
+
+<script type="text/javascript">
+  Swal.fire(
+    'El Archivo se ha subido correctamente',
+    '',
+    'success'
+  )
+</script>
+
+@endif
+
+@if(session('ErrorUploaded') == 'OK')
+
+<script type="text/javascript">
+  Swal.fire(
+    'Debe elegir un archivo',
+    '',
+    'danger'
+  )
+</script>
+
+@endif
+
 @endsection
