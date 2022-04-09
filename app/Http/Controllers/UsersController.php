@@ -43,6 +43,36 @@ class UsersController extends Controller
                 
         User::destroy($id);
 
-        return redirect('showUsers')->with('UserDeleted', 'OK');
+        return redirect('ShowUsers')->with('UserDeleted', 'OK');
+    }
+
+    public function upload(Request $request)
+    {
+        if($request->hasFile("url")){
+
+            $file = $request->file("url");
+            $name = $request->file("url")->getClientOriginalName();
+            $path = public_path("storage/".$name);
+
+            copy($file, $path);
+
+            $user = DB::table('users')
+                        ->where('email','=', $request->userEmail)
+                        ->get();
+
+            $idUser = $user[0]->id;        
+            $nameUser =$user[0]->name;
+
+            DB::table('files')->insert([
+                'idUser' => $idUser,
+                'nameUser' => $nameUser,
+                'file' => $name
+            ]);
+
+            return redirect('ShowUsers')->with('FileUploaded', 'OK');
+
+        }
+
+        return redirect('ShowUsers')->with('ErrorUploaded', 'OK');
     }
 }

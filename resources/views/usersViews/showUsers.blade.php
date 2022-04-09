@@ -33,6 +33,7 @@
                                         <th>Email</th>
                                         <th>Rol</th>
                                         <th></th>
+                                        <th></th>
 
                                     </tr>
 
@@ -51,9 +52,17 @@
                                             <td>
 
                                             <a href="{{ url('EditUser/'.$user->id) }}" class="btn btn-success">Editar</a>
-
                                             <a href="/DeleteUser/{{$user->id}}" class="btn btn-danger">Eliminar</a>
 
+                                            </td>
+
+                                            <td>
+                                                <form method="post" enctype="multipart/form-data" >
+                                                    @csrf
+                                                    <input type="hidden" name="userEmail" value="{{ $user->email }}">
+                                                    <input type="file" name="url" >
+                                                    <input type="submit" value="Subir">
+                                                </form>
                                             </td>
 
                                         </tr>
@@ -72,6 +81,30 @@
         </div>
     </div>
 </div>
+
+@if(session('FileUploaded') == 'OK')
+
+<script type="text/javascript">
+  Swal.fire(
+    'El Archivo se ha subido correctamente',
+    '',
+    'success'
+  )
+</script>
+
+@endif
+
+@if(session('ErrorUploaded') == 'OK')
+
+<script type="text/javascript">
+  Swal.fire(
+    'Debe elegir un archivo',
+    '',
+    'danger'
+  )
+</script>
+
+@endif
 
 @if(session('UserEdited') == 'OK')
 

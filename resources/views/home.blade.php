@@ -33,7 +33,7 @@
                             @if(auth()->user()->role == "Administrador")
 
                                 <li>
-                                    <a href="{{ url('showUsers') }}">
+                                    <a href="{{ url('ShowUsers') }}">
                                     <i class="fa fa-home"></i>
                                     <span>Administrar Usuarios</span>
                                     </a>

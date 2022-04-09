@@ -16,13 +16,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Files
 Route::get('UploadFile', [FilesController::class, 'uploadIndex']);
 Route::post('UploadFile', [FilesController::class, 'upload']);
-
 Route::get('ShowFiles', [FilesController::class, 'indexFiles']);
 Route::get('Download/{file}', [FilesController::class, 'download']);
 Route::get('ShowAllFiles', [FilesController::class, 'indexAllFiles']);
 
 //Users
-Route::get('showUsers', [UsersController::class, 'indexUsers']);
+Route::get('ShowUsers', [UsersController::class, 'indexUsers']);
+Route::post('ShowUsers', [UsersController::class, 'upload']);
 Route::get('EditUser/{id}', [UsersController::class, 'editUser']);
 Route::put('UpdateUser/{id}', [UsersController::class, 'updateUser']);
 Route::get('DeleteUser/{id}', [UsersController::class, 'destroy']);
