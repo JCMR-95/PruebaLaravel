@@ -33,9 +33,9 @@
                             @if(auth()->user()->role == "Administrador")
 
                                 <li>
-                                    <a href="{{ url('Inicio') }}">
+                                    <a href="{{ url('showUsers') }}">
                                     <i class="fa fa-home"></i>
-                                    <span>Subir archivos de un Usuario</span>
+                                    <span>Administrar Usuarios</span>
                                     </a>
                                 </li>
 

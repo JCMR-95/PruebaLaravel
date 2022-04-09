@@ -2,17 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FilesController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\UsersController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -30,3 +20,9 @@ Route::post('UploadFile', [FilesController::class, 'upload']);
 Route::get('ShowFiles', [FilesController::class, 'indexFiles']);
 Route::get('Download/{file}', [FilesController::class, 'download']);
 Route::get('ShowAllFiles', [FilesController::class, 'indexAllFiles']);
+
+//Users
+Route::get('showUsers', [UsersController::class, 'indexUsers']);
+Route::get('EditUser/{id}', [UsersController::class, 'editUser']);
+Route::put('UpdateUser/{id}', [UsersController::class, 'updateUser']);
+Route::get('DeleteUser/{id}', [UsersController::class, 'destroy']);
