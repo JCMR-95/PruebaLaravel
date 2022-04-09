@@ -18,6 +18,7 @@
                             <tr>
                                 <th>Nombre del Archivo:</th>
                                 <th>Nombre del Usuario</th>
+                                <th></th>
                             </tr>
 
                         </thead>
@@ -29,6 +30,7 @@
                                 <tr>
                                     <td><a href="{{ url('/Download/'.$file->file)  }}">{{ $file->file }}</a></td>
                                     <td>{{ $file->nameUser }}</td>
+                                    <td><a href="/DeleteFile/{{$file->file}}" class="btn btn-danger">Eliminar</a></td>
                                 </tr>
 
                             @endforeach
@@ -42,5 +44,17 @@
         </div>
     </div>
 </div>
+
+@if(session('FileDeleted') == 'OK')
+
+    <script type="text/javascript">
+    Swal.fire(
+        'Archivo eliminado correctamente',
+        '',
+        'success'
+    )
+    </script>
+
+@endif
 
 @endsection

@@ -59,11 +59,6 @@ class FilesController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function download(Request $request)
     {
         $path = public_path("storage/".$request->file);
@@ -71,59 +66,10 @@ class FilesController extends Controller
         return response()->download($path);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function destroy($file)
     {
-        //
-    }
+        DB::table('files')->where('file', '=', $file)->delete();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Files  $files
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Files $files)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Files  $files
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Files $files)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Files  $files
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Files $files)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Files  $files
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Files $files)
-    {
-        //
+        return back()->with('FileDeleted', 'OK');
     }
 }

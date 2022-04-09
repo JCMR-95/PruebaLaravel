@@ -19,6 +19,7 @@ Route::post('UploadFile', [FilesController::class, 'upload']);
 Route::get('ShowFiles', [FilesController::class, 'indexFiles']);
 Route::get('Download/{file}', [FilesController::class, 'download']);
 Route::get('ShowAllFiles', [FilesController::class, 'indexAllFiles']);
+Route::get('DeleteFile/{file}', [FilesController::class, 'destroy']);
 
 //Users
 Route::get('ShowUsers', [UsersController::class, 'indexUsers']);

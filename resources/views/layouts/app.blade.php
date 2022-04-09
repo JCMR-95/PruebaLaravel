@@ -60,10 +60,28 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ url('UploadFile') }}">
+                                        {{ __('Subir un Archivo') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ url('ShowFiles') }}">
+                                        {{ __('Mis archivos') }}
+                                    </a>
+
+                                    @if(auth()->user()->role == "Administrador")
+
+                                        <a class="dropdown-item" href="{{ url('ShowUsers') }}">
+                                            {{ __('Administrar Usuarios') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ url('ShowAllFiles') }}">
+                                            {{ __('Todos los archivos') }}
+                                        </a>
+
+                                    @endif
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Cerrar Sesión') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
