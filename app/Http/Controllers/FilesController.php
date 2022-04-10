@@ -13,6 +13,16 @@ class FilesController extends Controller
     {
         $this->middleware('auth');
     }
+    
+
+    public function validateAdmin()
+    {
+        if(auth()->user()->role != "Administrador"){
+
+            return false;
+        }
+    }
+
 
     public function indexFiles()
     {
@@ -25,17 +35,6 @@ class FilesController extends Controller
         return view('filesViews.showFiles')->with('files', $files);
     }
 
-    public function indexAllFiles()
-    {
-        $files = Files::all();
-
-        return view('filesViews.showAllFiles')->with('files', $files);
-    }
-
-    public function uploadIndex()
-    {
-        return view('filesViews.uploadFile');
-    }
 
     public function upload(Request $request)
     {
@@ -64,12 +63,31 @@ class FilesController extends Controller
 
     }
 
+
     public function download(Request $request)
     {
         $path = public_path("storage/".$request->file);
 
         return response()->download($path);
     }
+
+
+    public function indexAllFiles()
+    {
+        $isAdmin = $this->validateAdmin();
+        if (!$isAdmin) return view('home');
+
+        $files = Files::all();
+
+        return view('filesViews.showAllFiles')->with('files', $files);
+    }
+    
+
+    public function uploadIndex()
+    {
+        return view('filesViews.uploadFile');
+    }
+
 
     public function destroy($file)
     {
