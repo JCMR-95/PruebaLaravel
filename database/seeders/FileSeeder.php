@@ -33,6 +33,10 @@ class FileSeeder extends Seeder
                 'nameUser' => 'Alejandra Olmos',
                 'file' => 'BosqueOlmos.jpg',
             ],[
+                'idUser' => '2',
+                'nameUser' => 'Alejandra Olmos',
+                'file' => 'PruebaOlmos.docx',
+            ],[
                 'idUser' => '3',
                 'nameUser' => 'Alex Rodriguez',
                 'file' => 'PlayaRodriguez.jpg',
