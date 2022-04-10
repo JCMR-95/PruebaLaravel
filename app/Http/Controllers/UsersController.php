@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function indexUsers()
     {
@@ -30,11 +35,35 @@ class UsersController extends Controller
 
 
     public function updateUser(Request $request, $id)
+    
     {
 
-        DB::table('users')->where('id', $id)->update(['name' => $request->name, 'email' => $request->email, 'role' => $request->role]);
+        $user = DB::table('users')
+                ->where('email', '=', $request->email)
+                ->get();
 
-        return redirect('showUsers')->with('UserEdited', 'OK');
+        if($user->isEmpty()){
+
+            $validate = request()->validate([
+
+                'name' => ['required'],
+                'email' => ['required', 'email', 'unique:users']
+
+            ]);
+
+            DB::table('users')->where('id', $id)->update(['name' => $request->name, 'email' => $request->email, 'role' => $request->role]);
+
+        }
+
+        $validate = request()->validate([
+
+            'name' => ['required']
+
+        ]);
+
+        DB::table('users')->where('id', $id)->update(['name' => $request->name, 'role' => $request->role]);
+
+        return redirect('ShowUsers')->with('UserEdited', 'OK');
 
     }
 

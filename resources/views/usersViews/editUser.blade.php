@@ -38,12 +38,14 @@
                                         <strong>Correo:</strong>
                                         <input type="text" name="email" value="{{ $user->email }}" class="form-control">
                                     </div>
+                                    
                                 </div>
 
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
                                         <strong>Rol:</strong>
                                         <select name="role" id="role">
+                                            <option style="color:gray" value="{{ $user->role }}">{{ $user->role }}</option>
                                             <option value="Administrador">Administrador</option>
                                             <option value="Usuario Normal">Usuario Normal</option>
                                         </select>
