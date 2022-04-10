@@ -24,6 +24,8 @@ Route::get('DeleteFile/{file}', [FilesController::class, 'destroy']);
 //Users
 Route::get('ShowUsers', [UsersController::class, 'indexUsers']);
 Route::post('ShowUsers', [UsersController::class, 'upload']);
+Route::get('CreateUser', [UsersController::class, 'createIndex']);
+Route::post('CreateUser', [UsersController::class, 'createUser']);
 Route::get('EditUser/{id}', [UsersController::class, 'editUser']);
 Route::put('UpdateUser/{id}', [UsersController::class, 'updateUser']);
 Route::get('DeleteUser/{id}', [UsersController::class, 'destroy']);

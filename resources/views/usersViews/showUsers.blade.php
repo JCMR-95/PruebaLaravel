@@ -17,7 +17,7 @@
 
                         <div class="box-header">
 
-                            <button class="btn btn-primary" href="{{ route('register') }}">Crear Nuevo Usuario</button>
+                            <a class="nav-link" href="{{ url('CreateUser') }}">{{ __('Crear Usuario') }}</a>
 
                         </div>
 
@@ -101,6 +101,18 @@
     'Debe elegir un archivo',
     '',
     'danger'
+  )
+</script>
+
+@endif
+
+@if(session('UserCreated') == 'OK')
+
+<script type="text/javascript">
+  Swal.fire(
+    'El Usuario ha sido creado',
+    '',
+    'success'
   )
 </script>
 
