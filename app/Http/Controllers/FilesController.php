@@ -21,6 +21,8 @@ class FilesController extends Controller
 
             return false;
         }
+
+        return true;
     }
 
 
