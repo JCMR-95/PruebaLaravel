@@ -19,7 +19,7 @@
                             <li>
                                 <a href="{{ url('UploadFile') }}">
                                 <i class="fa fa-home"></i>
-                                <span>Subir un archivo</span>
+                                <span>Subir archivo</span>
                                 </a>
                             </li>
 

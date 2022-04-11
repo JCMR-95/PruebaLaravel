@@ -16,8 +16,8 @@
                         @endif
 
                         <div class="box-header">
-
-                            <a class="nav-link" href="{{ url('CreateUser') }}">{{ __('Crear Usuario') }}</a>
+                
+                            <a class="btn btn-primary" href="{{ url('CreateUser') }}">{{ __('Crear Usuario') }}</a>
 
                         </div>
 
@@ -28,7 +28,8 @@
                                 <thead>
 
                                     <tr>
-
+                                        
+                                        <th>ID</th>
                                         <th>Nombre</th>
                                         <th>Email</th>
                                         <th>Rol</th>
@@ -45,6 +46,7 @@
 
                                         <tr>
 
+                                            <td>{{ $user->id }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->role }}</td>
@@ -60,7 +62,7 @@
                                                 <form method="post" enctype="multipart/form-data" >
                                                     @csrf
                                                     <input type="hidden" name="userEmail" value="{{ $user->email }}">
-                                                    <input type="file" name="url" >
+                                                    <input type="file" name="url" value="Subir">
                                                     <input type="submit" value="Subir">
                                                 </form>
                                             </td>

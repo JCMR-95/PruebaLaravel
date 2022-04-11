@@ -84,7 +84,6 @@ class UsersController extends Controller
 
     public function createUser(Request $request)
     {
-
         $isAdmin = $this->validateAdmin();
         if (!$isAdmin) return view('home');
 
@@ -99,7 +98,7 @@ class UsersController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'role' => $request->rol,
+            'role' => $request->role,
             'password' => Hash::make($request->password),
         ]);
 

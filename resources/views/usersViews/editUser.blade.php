@@ -25,37 +25,38 @@
                             @csrf
                             @method('PUT')
                     
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>Nombre:</strong>
-                                        <input type="text" name="name" value="{{ $user->name }}" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>Correo:</strong>
-                                        <input type="text" name="email" value="{{ $user->email }}" class="form-control">
-                                    </div>
-                                    
-                                </div>
-
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>Rol:</strong>
-                                        <select name="role" id="role">
-                                            <option style="color:gray" value="{{ $user->role }}">{{ $user->role }}</option>
-                                            <option value="Administrador">Administrador</option>
-                                            <option value="Usuario Normal">Usuario Normal</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                            
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Nombre:</strong>
+                                    <input type="text" name="name" value="{{ $user->name }}" class="form-control">
                                 </div>
                             </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Correo:</strong>
+                                    <input type="text" name="email" value="{{ $user->email }}" class="form-control">
+                                </div>
+                                
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="custom-select">
+                                    <strong>Rol:</strong>
+                                    <br>
+                                    <select name="role" id="role">
+                                        <option style="color:gray" value="{{ $user->role }}">{{ $user->role }}</option>
+                                        <option value="Administrador">Administrador</option>
+                                        <option value="Usuario Normal">Usuario Normal</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                            
                     
                         </form>
 

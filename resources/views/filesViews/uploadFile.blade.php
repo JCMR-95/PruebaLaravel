@@ -7,7 +7,7 @@
         <div class="col-md-8">
             <div class="card">
                 
-                <div class="card-header">{{ __('Subir Archivos') }}</div>
+                <div class="card-header">{{ __('Subir archivos') }}</div>
 
                 <div class="card-body">
                     <form method="post" enctype="multipart/form-data" >
